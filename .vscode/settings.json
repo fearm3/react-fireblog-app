@@ -16,6 +16,7 @@
     "*README.*": true,
     "*src.*": true,
     "*yarn": true,
-    "*public": true
+    "*public": true,
+    "src\\redux": true
   }
 }
