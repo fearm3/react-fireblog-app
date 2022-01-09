@@ -11,13 +11,14 @@
     "*node_modules.*": true,
     "*package-lock": true,
     "*package-lock.*": true,
-    "*package.*": true,
-    "*public": true,
     "*public.*": true,
     "*README": true,
     "*README.*": true,
     "*src.*": true,
     "*yarn": true,
-    "*yarn.*": true
+    "*yarn.*": true,
+    "*package": true,
+    "*package.*": true,
+    "*public": true
   }
 }
