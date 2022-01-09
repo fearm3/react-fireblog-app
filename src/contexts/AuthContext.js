@@ -7,7 +7,7 @@ export function useAuthContext() {
 }
 
 const AuthContextProvider = ({ children }) => {
-  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={null}>{children}</AuthContext.Provider>;
 };
 
 export default AuthContextProvider;

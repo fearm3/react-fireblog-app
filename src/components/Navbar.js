@@ -26,7 +26,7 @@ export default function MenuAppBar() {
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(false);
   };
 
   return (
@@ -75,8 +75,9 @@ export default function MenuAppBar() {
                 <Link to="/new-blog">
                   <MenuItem onClick={handleClose}>New</MenuItem>
                 </Link>
+                
                 <Link to="/">
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  <MenuItem onClick={handleChange}>Logout</MenuItem>
                 </Link>
               </Menu>
             </div>

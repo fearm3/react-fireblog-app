@@ -3,13 +3,11 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Avatar, Button } from "@mui/material";
 import blog from "../assets/blogpost.jpeg";
-
-import { FirebaseError } from "firebase/app";
+import { auth, provider } from "../helpers/firebase";
+// import { FirebaseError } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const loginFirebase = () => {
   const SignInWithFirebase = () => {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -62,10 +60,10 @@ const loginFirebase = () => {
           <Button variant="contained" size="large">
             SUBMIT
           </Button>
-          <Button size="large" onClick={SignInWithFirebase}>
-            Sign in with Google
-          </Button>
         </Box>
+        <Button size="large" onClick={SignInWithFirebase}>
+          Sign in with Google
+        </Button>
       </div>
     </div>
   );
