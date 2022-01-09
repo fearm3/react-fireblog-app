@@ -16,9 +16,6 @@
     "*README.*": true,
     "*src.*": true,
     "*yarn": true,
-    "*yarn.*": true,
-    "*package": true,
-    "*package.*": true,
     "*public": true
   }
 }
