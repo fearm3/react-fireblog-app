@@ -15,6 +15,7 @@ import blog from '../assets/blogpost.jpeg'
 
 export default function MenuAppBar() {
   const { currentUser } = React.useContext(AuthContext) 
+  
   console.log("NavbarCurrentUser :",currentUser)
   // const [displayToggle, setDisplayToggle] = React.useState(false);
   const [auth, setAuth] = React.useState(true);
@@ -50,7 +51,9 @@ export default function MenuAppBar() {
           </Typography>
           {auth && (
             <div className='icon'>
+              <div>
               <h2>{currentUser.email}</h2>
+              </div>
               <IconButton
         
                 size="large"
@@ -97,7 +100,7 @@ export default function MenuAppBar() {
                 <Link to='/new-blog'>
                 <MenuItem onClick={handleClose}>New</MenuItem>
                 </Link>
-                <Link to='/login'>
+                <Link to='/'>
                 <MenuItem onClick={()=> logOut()}>Logout</MenuItem>
                 </Link>
                 </>

@@ -20,16 +20,15 @@ import {
   increment,
 } from "firebase/firestore";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCFsP-qtnVS6Zba9UuiFsDM7oozLY9Jeh4",
-    authDomain: "fireblog-app-react-d62d2.firebaseapp.com",
-    databaseURL: "https://fireblog-app-react-d62d2-default-rtdb.firebaseio.com",
-    projectId: "fireblog-app-react-d62d2",
-    storageBucket: "fireblog-app-react-d62d2.appspot.com",
-    messagingSenderId: "613813282029",
-    appId: "1:613813282029:web:a046489b8461d3c8f598e4"
-  };
-
+const firebaseConfig = {
+  apiKey: "AIzaSyDcg0QaoCB9LhWKk6x3PEnMlpn64mSVukk",
+  authDomain: "fireblog-app-7ae87.firebaseapp.com",
+  databaseURL: "https://fireblog-app-7ae87-default-rtdb.firebaseio.com",
+  projectId: "fireblog-app-7ae87",
+  storageBucket: "fireblog-app-7ae87.appspot.com",
+  messagingSenderId: "13204803778",
+  appId: "1:13204803778:web:f8d1e60b2bf2f839dd6b5b",
+};
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
@@ -37,14 +36,12 @@ export const app = initializeApp(firebaseConfig);
 export const createUser = (email, password) => {
   const auth = getAuth(app);
 
-  let user = createUserWithEmailAndPassword(auth, email, password)
-  console.log(user)
-       
+  let user = createUserWithEmailAndPassword(auth, email, password);
+  console.log(user);
 };
 
 export const logIn = (email, password) => {
-   const auth = getAuth(app);
-
+  const auth = getAuth(app);
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -92,17 +89,17 @@ export const userObserver = (setCurrentUser, setPending) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-      console.log(uid)
+      console.log(uid);
       setCurrentUser(user);
       setPending(false);
     } else {
       // User is signed out
-      setCurrentUser(null);
+      setCurrentUser(false);
       setPending(false);
       // ...
     }
   });
-}; 
+};
 
 export const logOut = () => {
   const auth = getAuth(app);
@@ -127,7 +124,7 @@ export const addData = async (currentUser, title, content, image) => {
       title: title,
       content: content,
       comments: {
-        commemt_count:0,
+        commemt_count: 0,
       },
       get_like_count: 0,
       image: image,
@@ -142,6 +139,7 @@ export const addData = async (currentUser, title, content, image) => {
 export const readData = async (setData) => {
   const querySnapshot = await getDocs(collection(db, "blogs"));
   setData(querySnapshot.docs);
+  // console.log(querySnapshot.docs)
 };
 
 export const updateLike = async (id) => {
@@ -156,4 +154,3 @@ export const updateComment = async (id) => {
     get_like_count: increment(1),
   });
 };
-

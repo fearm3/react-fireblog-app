@@ -11,46 +11,71 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import blog2 from "../assets/blogpost.jpg";
 import { useFetch } from "../helpers/functions";
+import { useNavigate } from "react-router-dom";
 
-export default function MultiActionAreaCard() {
-  const { newUser, isLoading } = useFetch();
-  console.log(newUser)
+
+export default function BlogCard({doc}) {
+
+  const navigate = useNavigate()
+
+
+  console.log(doc.id)
+  const { _document } = doc
+  // console.log(_document.data.value.mapValue.fields)
+   const items = _document.data.value.mapValue.fields 
+  //  console.log(items)
+    const {author, comments, content, get_like_count, image, published_date, title} = items
+    const slicedDate = published_date.timestampValue.slice(0,10)
+    // const int_date = parseInt(published_date)
+    // console.log(int_date)
+
+    let date = new Date(published_date);
+    // let day = date.getDate();
+    // let month = date.getMonth(); 
+    // let year = date.getFullYear(); 
+
+  
+
   return (
     <div className='App'>
-      <h1>DASHBOARD</h1>
-      <Card sx={{ maxWidth: 445 }} className="card">
-        <CardActionArea>
+     
+
+            <Card sx={{ maxWidth: 445 }} className="card" >
+        <CardActionArea onClick={()=> navigate('/details')}>
           <CardMedia
             component='img'
             height='140'
-            image={blog2}
-            alt='green iguana'
+            image={image.stringValue}
+            alt='blog image'
           />
           <CardContent sx={{background:'#EFEEFE'}}> 
             <Typography gutterBottom variant='h5' component='div'>
-              Python
+              {title.stringValue}
+            </Typography>
+            <Typography>
+                {slicedDate}
             </Typography>
             <Typography variant='body2' color='text.secondary'>
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              {content.stringValue}
             </Typography>
           </CardContent>
         </CardActionArea>
         <Typography gutterBottom variant='h6' component='div'>
           <AccountCircleIcon sx={{ mr: '10px', mb:'-5px', ml:'-160px' }} />
-          <span>mltm0204@gmail.com</span>
+          <span>{author.stringValue}</span>
         </Typography>
         <CardActions>
           <Button>
             <FavoriteBorderIcon />
-            <span>2</span>
+            <span>{get_like_count.integerValue}</span>
           </Button>
           <Button>
             <ChatBubbleOutlineIcon />
-            <span>0</span>
+            <span>{comments.mapValue.fields.commemt_count.integerValue}</span>
           </Button>
         </CardActions>
       </Card>
+          
     </div>
   );
 }

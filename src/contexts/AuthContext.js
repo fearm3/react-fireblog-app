@@ -18,7 +18,7 @@ export function AuthContextProvider(props) {
     // console.log("pending");
     return <>Loading...</>
   }
-
+  
   return (
     <AuthContext.Provider value={{ currentUser }}>
       {props.children}
