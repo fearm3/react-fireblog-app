@@ -4,7 +4,7 @@ import { BlogContext } from "../contexts/BlogContext";
 
 const Details = () => {
   const { blogsInfo, getBlogs, isLoading } = useContext(BlogContext);
-  console.log(getBlogs);
+  console.log(blogsInfo);
   return (
     <div>
       <BlogCard />
