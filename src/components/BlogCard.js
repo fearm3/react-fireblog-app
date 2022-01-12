@@ -10,8 +10,11 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import blog2 from "../assets/blogpost.jpg";
+import { useFetch } from "../helpers/functions";
 
 export default function MultiActionAreaCard() {
+  const { newUser, isLoading } = useFetch();
+  console.log(newUser)
   return (
     <div className='App'>
       <h1>DASHBOARD</h1>
