@@ -8,12 +8,12 @@ const BlogContextProvider = (props) => {
   const [blogsInfo, setBlogsInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const colRef = collection(db, "bloggers");
+  const colRef = collection(db, "blogs");
 
   const q = query(colRef, orderBy("createdAt"));
-
+  console.log("query",q);
   const getBlogs = () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     getDocs(q)
       .then((snapshot) => {
         let blogs = [];

@@ -1,13 +1,15 @@
-import React from 'react'
-import BlogCard from '../components/BlogCard'
-
+import React, { useContext } from "react";
+import BlogCard from "../components/BlogCard";
+import { BlogContext } from "../contexts/BlogContext";
 
 const Details = () => {
-    return (
-        <div>
-            <BlogCard/>
-        </div>
-    )
-}
+  const { blogsInfo, getBlogs, isLoading } = useContext(BlogContext);
+  console.log(getBlogs);
+  return (
+    <div>
+      <BlogCard />
+    </div>
+  );
+};
 
-export default Details
+export default Details;
